@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(#8491e6, #a1a1a1);
+}
+
+#calculator {
+  height: 500px;
+  width: 500px;
+  background-color: #1a1b1d;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 10px 10px 15px;
+  position: relative;
+  top: 40px;
+}
+#history {
+  height: 25%;
+  color: white;
+  text-align: right;
+  padding-right: 20px;
+}
+#history-value {
+  font-size: 25px;
+  font-weight: 100;
+  padding-top: 10px;
+}
+#output-value {
+  font-size: 35px;
+  font-weight: bold;
+  color: #1a39f6;
+}
+#keyboard {
+  height: 75%;
+}
+#keyboard > .number,
+#keyboard > .operator {
+  float: left;
+  height: 25%;
+  width: 33.3%;
+  background-color: #1f2022;
+  border: 1px solid #1c1e1f;
+  color: azure;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: 0;
+}
+#keyboard > .number:hover,
+#keyboard > .operator:hover {
+  background-color: #1a39f6;
+  transform: scale(1.1);
+}
+#keyboard > .number:active,
+#keyboard > .operator:active {
+  font-size: 10px;
+}
+
+#keyboard-operator {
+  height: auto;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 25%;
+  left: -30px;
+}
+.operator {
+  height: 50px;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: 0;
+}
+.operator:hover {
+  background-color: blueviolet;
+}
+.operator:active {
+  font-size: 8px;
+}

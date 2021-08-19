@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>A simple calculator</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="container">
+		<div id="calculator">
+			<div id="history">
+				<p id="history-value"></p>
+				<p id="output-value"></p>
+			</div>
+			<div id="keyboard">
+				<button class="number" id="7">7</button>
+				<button class="number" id="8">8</button>
+				<button class="number" id="9">9</button>
+				<button class="number" id="4">4</button>
+				<button class="number" id="5">5</button>
+				<button class="number" id="6">6</button>
+				<button class="number" id="1">1</button>
+				<button class="number" id="2">2</button>
+				<button class="number" id="1">3</button>
+				<button class="number" id=".">.</button>
+				<button class="number" id="0">0</button>
+				<button class="operator" id="=">=</button>
+			</div>
+
+			<div id="keyboard-operator">
+				<button class="operator" id="clear">C</button>
+				<button class="operator" id="backspace">CE</button>
+				<button class="operator" id="/">&#247</button>
+				<button class="operator" id="*">&times</button>
+				<button class="operator" id="+">+</button>
+				<button class="operator" id="-">-</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		function getHistory() {
+			/* const displayInput = */
+			return document.getElementById('history-value').innerText;
+			// console.log(displayInput);
+			// return displayInput;
+
+		}
+		function printHistory(num) {
+			document.getElementById('history-value').innerText = num;
+		}
+		// printHistory(6666);
+
+		function getOutput() {
+			document.getElementById('output-value').innerText;
+		}
+
+		function printOutput(num) {
+			if (num == "") {
+				document.getElementById('output-value').innerText = num;
+			}
+			else {
+				document.getElementById('output-value').innerText = formatNumber(num);
+			}
+		}
+		printOutput(66666);
+
+		function formatNumber(num) {
+			let number = Number(num);
+			let value = number.toLocaleString("en");
+			return value;
+		}
+		let history;
+		let number = document.getElementsByClassName("number");
+		for (let i = 0; i < number.length; i++) {
+			number[i].addEventListener("click", function () {
+				history = getHistory();
+				history += this.id;
+				printHistory(history); v
+			});
+		}
+
+		let operator = document.getElementsByClassName("operator");
+		for (let i = 0; i < operator.length; i++) {
+			operator[i].addEventListener("click", function () {
+				if (this.id == "clear") {
+					printHistory("");
+					printOutput("");
+				}
+				else if (this.id == "backspace") {
+					history = getHistory();
+					history = history.substr(0, history.length - 1);
+					printHistory(history);
+					printOutput("")
+				}
+				else if (this.id == "=") {
+					history = getHistory();
+					let result = eval(history);
+					printOutput(result);
+					printHistory(history);
+
+				}
+				else {
+
+					let output = getOutput();
+					console.log(output);
+
+					history = getHistory();
+					if (output) {
+						history = output + this.id;
+						printHistory(history);
+					}
+					else {
+						history += this.id;
+						printHistory(history);
+					}
+
+				}
+
+			});
+		}
+
+		// function getOutput(num) {
+		// 	if (num == "") {
+		// 		document.getElementById('output-value').innerText = num;
+		// 	}
+		// 	else {
+		// 		document.getElementById('output-value').innerText = formatNumber(num);
+		// 	}
+
+		// }
+		// // getOutput(86878)
+
+		// function formatNumber(num) {
+		// 	let number = Number(num);
+		// 	let value = number.toLocaleString("en");
+		// 	return value;
+		// }
+		// let history = "";
+		// let number = document.getElementsByClassName("number");
+		// for (let i = 0; i < number.length; i++) {
+		// 	const element = number[i];
+		// 	console.log(element);
+
+		// 	number[i].addEventListener('click', function (event) {
+		// 		console.log("clicked", event.target.id);
+		// 		// history = getHistory();
+		// 		history += event.target.id;
+
+		// 		console.log(history);
+		// 		getHistory(history);
+
+
+
+		// 	})
+
+		// }
+		// let operator = document.getElementsByClassName("operator");
+		// for (let i = 0; i < operator.length; i++) {
+		// 	const element = operator[i];
+		// 	console.log(element);
+
+		// 	element.addEventListener('click', function (event) {
+		// 		console.log("clicked", event.target.id);
+		// 		if (event.target.id == 'clear') {
+		// 			document.getElementById('history-value').innerText = "";
+		// 			document.getElementById('output-value').innerText = "";
+		// 		}
+
+		// 		else if (event.target.id == "backspace") {
+		// 			// // let delete = getHistory();
+		// 			// history = history.substr(0, history.length - 1);
+		// 			// getHistory(delete);
+		// 		}
+		// 		else if (event.target.id == "=") {
+		// 			let result = eval(history);
+		// 			getOutput(result);
+
+		// 		}
+
+		// 	})
+
+		// }
+	</script>
+</body>
+
+</html>
